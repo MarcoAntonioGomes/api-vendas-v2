@@ -1,9 +1,10 @@
+import CreateCustomerService from '@modules/customers/services/CreateCustomerService';
+import DeleteCustomerService from '@modules/customers/services/DeleteCustomerService';
+import ListCustomerService from '@modules/customers/services/ListCustomerService';
+import ShowCustomerService from '@modules/customers/services/ShowCustomerService';
+import UpdateCustomerService from '@modules/customers/services/UpdateCustomerService';
 import { Request, Response } from 'express';
-import ListCustomerService from '../services/ListCustomerService';
-import ShowCustomerService from '../services/ShowCustomerService';
-import CreateCustomerService from '../services/CreateCustomerService';
-import UpdateCustomerService from '../services/UpdateCustomerService';
-import DeleteCustomerService from '../services/DeleteCustomerService';
+import { container } from 'tsyringe';
 
 export default class CustomerController {
   // eslint-disable-next-line prettier/prettier
@@ -28,7 +29,7 @@ export default class CustomerController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, email } = request.body;
 
-    const createCustomer = new CreateCustomerService();
+    const createCustomer = container.resolve(CreateCustomerService);
 
     const customer = await createCustomer.execute({
       name,
