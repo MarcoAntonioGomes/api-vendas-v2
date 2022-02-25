@@ -1,5 +1,6 @@
 import { ICreateCustomer } from '@modules/customers/domain/models/ICreateCustomer';
 import { ICustomer } from '@modules/customers/domain/models/ICustomer';
+import { IPaginationCustomer } from '@modules/customers/domain/models/IPaginationCustomer';
 import { ICustomersRepository } from '@modules/customers/domain/models/repositories/ICustomerRepository';
 import { getRepository, Repository } from 'typeorm';
 import Customer from '../entities/Customer';
@@ -10,6 +11,15 @@ class CustomersRepository implements ICustomersRepository {
   constructor() {
     this.ormRepository = getRepository(Customer);
   }
+  public async list(): Promise<IPaginationCustomer> {
+    const customers = await this.ormRepository.createQueryBuilder().paginate();
+    return customers as IPaginationCustomer;
+  }
+
+  public async delete(customer: ICustomer): Promise<void> {
+    await this.ormRepository.remove(customer);
+  }
+
   public async create({ name, email }: ICreateCustomer): Promise<ICustomer> {
     const customer = this.ormRepository.create({ name, email });
     await this.ormRepository.save(customer);
