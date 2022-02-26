@@ -2,10 +2,11 @@ import AppError from '@shared/errors/AppError';
 import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 import UpdateUserAvatarService from '../../../services/UpdateUserAvatarService';
+import { container } from 'tsyringe';
 
 export default class UserAvatarController {
   public async update(request: Request, response: Response): Promise<Response> {
-    const updateAvatar = new UpdateUserAvatarService();
+    const updateAvatar = container.resolve(UpdateUserAvatarService);
     const file = request.file;
     if (file) {
       const { filename } = file;
