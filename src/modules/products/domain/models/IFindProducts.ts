@@ -1,0 +1,3 @@
+interface IFindProducts {
+  id: string;
+}

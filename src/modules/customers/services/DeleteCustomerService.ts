@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
-import { ICustomersRepository } from '../domain/models/repositories/ICustomerRepository';
+import { ICustomersRepository } from '../domain/repositories/ICustomerRepository';
 interface IRequest {
   id: string;
 }

@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { ICustomersRepository } from '../domain/models/repositories/ICustomerRepository';
+import { ICustomersRepository } from '../domain/repositories/ICustomerRepository';
 import { IPaginationCustomer } from '../domain/models/IPaginationCustomer';
 
 @injectable()

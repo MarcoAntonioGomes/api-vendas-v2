@@ -1,7 +1,7 @@
 import { ICreateCustomer } from '@modules/customers/domain/models/ICreateCustomer';
 import { ICustomer } from '@modules/customers/domain/models/ICustomer';
 import { IPaginationCustomer } from '@modules/customers/domain/models/IPaginationCustomer';
-import { ICustomersRepository } from '@modules/customers/domain/models/repositories/ICustomerRepository';
+import { ICustomersRepository } from '@modules/customers/domain/repositories/ICustomerRepository';
 import { getRepository, Repository } from 'typeorm';
 import Customer from '../entities/Customer';
 

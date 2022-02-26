@@ -1,6 +1,6 @@
-import { ICreateCustomer } from '../ICreateCustomer';
-import { ICustomer } from '../ICustomer';
-import { IPaginationCustomer } from '../IPaginationCustomer';
+import { ICreateCustomer } from '../models/ICreateCustomer';
+import { ICustomer } from '../models/ICustomer';
+import { IPaginationCustomer } from '../models/IPaginationCustomer';
 
 export interface ICustomersRepository {
   findByName(name: string): Promise<ICustomer | undefined>;
