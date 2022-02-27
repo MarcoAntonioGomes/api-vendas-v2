@@ -1,5 +1,6 @@
 import { ICreateProduct } from '@modules/products/domain/models/ICreateProduct';
 import { IProduct } from '@modules/products/domain/models/IProduct';
+import { IUpdateProductAfterOrder } from '@modules/products/domain/models/IUpdateProductAfterOrder';
 import { IProductRepository } from '@modules/products/domain/repositories/IProductRepository';
 import { Repository, In, getRepository } from 'typeorm';
 import Product from '../Product';
@@ -9,6 +10,11 @@ export class ProductRepository implements IProductRepository {
 
   constructor() {
     this.ormRepository = getRepository(Product);
+  }
+  public async saveManyAfterOrder(
+    products: IUpdateProductAfterOrder[],
+  ): Promise<void> {
+    await this.ormRepository.save(products);
   }
 
   public async findById(id: string): Promise<IProduct | undefined> {
