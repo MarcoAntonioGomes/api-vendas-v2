@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
 import 'reflect-metadata';
-import { NextFunction, Request, response, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
-import '@shared/typeorm';
+import '@shared/infra/typeorm';
 import '@shared/container';
 import { errors } from 'celebrate';
 import { pagination } from 'typeorm-pagination';
