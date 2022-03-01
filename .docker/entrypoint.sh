@@ -1,5 +1,5 @@
 #!/bin/bash
-
-npm install
-npm run typeorm migration:run
-npm run dev
+echo "Intalling app.."
+exec npm install
+exec npm run typeorm migration:run
+exec npm run dev
